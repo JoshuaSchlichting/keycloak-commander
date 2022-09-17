@@ -5,8 +5,6 @@ import (
 )
 
 func TestInitOutputContainsFlags(t *testing.T) {
-	// CreateConfigFile = createConfigFile
-	// Execute()
 	initCmd.Flag("host").Value.Set("http://localhost:8080/")
 	initCmd.Flag("realm").Value.Set("master")
 	initCmd.Flag("username").Value.Set("adminname")
