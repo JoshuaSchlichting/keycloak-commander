@@ -1,18 +1,24 @@
-/*
-Copyright © 2022 Joshua Schlichting 7680545+JoshuaSchlichting@users.noreply.github.com
-
-*/
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"keycloak-commander/cmd"
+	"keycloak-commander/keycloak"
 	"log"
 	"os"
 )
 
 func main() {
 	cmd.ConfigFileWriter = configFileWriter
+	config := getConfigFromFile(getConfigFilename())
+	// TODO: Don't require the commander until a command is actually run
+	cmd.KeycloakCommander = keycloak.NewKeycloakCommander(
+		config.Host,
+		config.Username,
+		config.Password,
+		config.Realm,
+	)
 	cmd.Execute()
 }
 
@@ -57,4 +63,19 @@ func configFileWriter(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func getConfigFromFile(filename string) cmd.Config {
+	// read config file
+	file, err := os.Open(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+	config := cmd.Config{}
+	err = json.NewDecoder(file).Decode(&config)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return config
 }
