@@ -2,6 +2,8 @@
 
 ## Use
 ### Create config file
+> This file will store your username and password in plain text at the time of writing this!
+The config file is created at ~/.keycloak-commander.json
 ```
 Usage:
   keycloak-commander init [flags]
