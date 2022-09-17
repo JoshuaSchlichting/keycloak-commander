@@ -20,7 +20,7 @@ Flags:
 Usage:
   keycloak-commander create client [flags]
 
-Each argument shall be a string represent a client name. At least one client name is required.
+Each argument shall be a string representing a client name. At least one client name is required.
 
 Example: keycloak-commander create client my-client another-client a-third-client
 ```
