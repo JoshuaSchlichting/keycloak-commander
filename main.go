@@ -1,7 +1,3 @@
-/*
-Copyright © 2022 Joshua Schlichting 7680545+JoshuaSchlichting@users.noreply.github.com
-
-*/
 package main
 
 import (
