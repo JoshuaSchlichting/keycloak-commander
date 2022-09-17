@@ -22,11 +22,11 @@ func NewKeycloakCommander(hostname, username, password, realm string) *KeycloakC
 	client := gocloak.NewClient(hostname, gocloak.SetAuthAdminRealms("admin/realms"), gocloak.SetAuthRealms("realms"))
 	ctx := context.Background()
 	restyClient := client.RestyClient()
-	restyClient.SetDebug(true)
+	restyClient.SetDebug(false)
 	restyClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	token, err := client.LoginAdmin(ctx, username, password, realm) // returns token
 	if err != nil {
-		panic("Something wrong with the credentials or url")
+		log.Panicf("Something wrong with the credentials or url: %v", err)
 	}
 	return &KeycloakCommander{
 		Host:        hostname,
