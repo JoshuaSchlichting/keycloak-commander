@@ -19,13 +19,7 @@ type Config struct {
 // initCmd represents the init command
 var initCmd = &cobra.Command{
 	Use:   "init",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Create ~/.keycloak-commander.json",
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Println("Creating config file")
 		host := cmd.Flag("host").Value.String()
@@ -61,8 +55,12 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	initCmd.Flags().StringP("host", "h", "", "Hostname of the Keycloak server")
+	initCmd.Flags().StringP("host", "i", "", "Hostname of the Keycloak server")
+	initCmd.MarkFlagRequired("host")
 	initCmd.Flags().StringP("realm", "r", "", "Realm to use")
+	initCmd.MarkFlagRequired("realm")
 	initCmd.Flags().StringP("username", "u", "", "Admin's username")
+	initCmd.MarkFlagRequired("username")
 	initCmd.Flags().StringP("password", "p", "", "Admin's password")
+	initCmd.MarkFlagRequired("password")
 }
