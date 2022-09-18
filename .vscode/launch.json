@@ -21,7 +21,7 @@
             "mode": "auto",
             "program": "main.go",
             "args": [
-                "update", "client", "thisone", "--json", "examples/update_client.json"
+                "update", "client", "--json", "examples/update_client.json", "arg0here"
             ]
         }
     ]
