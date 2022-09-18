@@ -48,5 +48,13 @@ func (kc *KeycloakCommander) CreateClient(clientName string) {
 		panic(err)
 	}
 	log.Println(client)
+}
 
+func (kc *KeycloakCommander) UpdateClient(clientName string, updatedClient *gocloak.Client) {
+
+	err := kc.client.UpdateClient(kc.context, kc.accessToken, kc.Realm, *updatedClient)
+	if err != nil {
+		panic(err)
+	}
+	log.Printf("Client updated: %s\n", clientName)
 }
