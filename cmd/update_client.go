@@ -10,7 +10,7 @@ import (
 
 // updateClientCmd represents the updateClient command
 var updateClientCmd = &cobra.Command{
-	Use:   "updateClient",
+	Use:   "client",
 	Short: "Update a client's config to that of a JSON file represenign a Keycloak 'ClientRepresentation'",
 	Long: `The payload should reflect the Client struct as defined here: https://github.com/Nerzal/gocloak/blob/fe4f627eaf1bff988ee5df2fd0d0b87daac6c074/models.go#L435
 
