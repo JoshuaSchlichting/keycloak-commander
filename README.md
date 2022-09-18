@@ -15,8 +15,9 @@ Flags:
   -p, --password string   Admin's password
   -r, --realm string      Realm to use
   -u, --username string   Admin's username
-
-
+```
+### Create a client
+```
 Usage:
   keycloak-commander create client [flags]
 
