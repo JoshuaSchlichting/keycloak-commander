@@ -1,5 +1,5 @@
 # keycloak-commander
-keycloak-commander is a work in progress. Its intent is to provide and easy to use CLI for Red Hat's Keycloak authentication service.
+keycloak-commander is a work in progress. Its intent is to provide an easy to use CLI for Red Hat's Keycloak authentication service.
 ## Use
 ### Create config file
 > This file will store your username and password in plain text at the time of writing this!
