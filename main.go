@@ -67,23 +67,17 @@ func configFileWriter(data []byte) error {
 
 func getConfigFromFile(filename string) cmd.Config {
 	config := cmd.Config{}
-	err := json.Unmarshal(jsonPayloadRetriever(filename), &config)
+	err := json.Unmarshal(getFilePayload(filename), &config)
 	if err != nil {
 		log.Fatal(err)
 	}
 	return config
 }
 
-func jsonPayloadRetriever(filename string) []byte {
-	file, err := os.Open(filename)
+func getFilePayload(filename string) []byte {
+	fileContent, err := os.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer file.Close()
-	payload := []byte{}
-	err = json.NewDecoder(file).Decode(&payload)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return payload
+	return fileContent
 }
