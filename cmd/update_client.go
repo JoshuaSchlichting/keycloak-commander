@@ -42,6 +42,6 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	updateClientCmd.Flags().String("json", "", "Json file representing the payload as defined @ https://github.com/Nerzal/gocloak/blob/fe4f627eaf1bff988ee5df2fd0d0b87daac6c074/models.go#L435")
+	updateClientCmd.Flags().String("json", "", "Json file representing the ClientRepresentation payload.")
 	updateClientCmd.MarkFlagRequired("json")
 }
