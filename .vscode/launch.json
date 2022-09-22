@@ -5,13 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "init",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "main.go",
+            "args": [
+                "init",
+                "--host", "http://0.0.0.0:8081",
+                "-p", "admin",
+                "-u", "admin",
+                "-r", "master"
+            ]
+        },
+        {
             "name": "create client",
             "type": "go",
             "request": "launch",
             "mode": "auto",
             "program": "main.go",
             "args": [
-                "create", "client", "thisone"
+                "create", "client", "testclient"
             ]
         },
         {
@@ -21,7 +35,7 @@
             "mode": "auto",
             "program": "main.go",
             "args": [
-                "update", "client", "--json", "examples/update_client.json", "arg0here"
+                "update", "client", "--json", "examples/myclient.json"
             ]
         }
     ]
