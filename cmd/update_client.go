@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"encoding/json"
+	"log"
 	"os"
 
 	"github.com/Nerzal/gocloak/v11"
@@ -16,6 +17,9 @@ var updateClientCmd = &cobra.Command{
 
 Example: keycloak-commander update client --json /path/to/file.json`,
 	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) != 0 {
+			log.Fatalf("0 arguments expected, got %d", len(args))
+		}
 		jsonFilename := cmd.Flag("json").Value.String()
 		filePayload, err := os.ReadFile(jsonFilename)
 		if err != nil {
@@ -25,9 +29,9 @@ Example: keycloak-commander update client --json /path/to/file.json`,
 
 		err = json.Unmarshal(filePayload, clientRepresentation)
 		if err != nil {
-			panic(err)
+			log.Fatal("There was an error loading the JSON file as a ClientRepresentation: ", err)
 		}
-		KeycloakCommander.UpdateClient(args[0], clientRepresentation)
+		KeycloakCommander.UpdateClient(clientRepresentation)
 	},
 }
 
