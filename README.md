@@ -1,5 +1,7 @@
 # keycloak-commander
 keycloak-commander provides an easy to use CLI for Red Hat's Keycloak authentication service.
+
+This CLI is built around [gocloak](https://github.com/Nerzal/gocloak), a Keycloak client for Golang.
 ## Use
 ### Create config file
 > This file will store your username and password in plain text at the time of writing this!
