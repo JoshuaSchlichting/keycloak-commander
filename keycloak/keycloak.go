@@ -58,3 +58,11 @@ func (kc *KeycloakCommander) UpdateClient(updatedClient *gocloak.Client) {
 	}
 	log.Printf("Client updated: %s\n", *updatedClient.ClientID)
 }
+
+func (kc *KeycloakCommander) CreateRealm(realmRepresentation *gocloak.RealmRepresentation) {
+	realm, err := kc.client.CreateRealm(kc.context, kc.accessToken, *realmRepresentation)
+	if err != nil {
+		panic(err)
+	}
+	log.Printf("Created new realm with ID: %s\n", realm)
+}
