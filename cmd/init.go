@@ -7,15 +7,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var ConfigFileWriter func(data []byte) error
-
-type Config struct {
-	Host     string `json:"host"`
-	Realm    string `json:"realm"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
 // initCmd represents the init command
 var initCmd = &cobra.Command{
 	Use:   "init",

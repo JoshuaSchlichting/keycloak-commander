@@ -31,7 +31,8 @@ Example: keycloak-commander update client --json /path/to/file.json`,
 		if err != nil {
 			log.Fatal("There was an error loading the JSON file as a ClientRepresentation: ", err)
 		}
-		KeycloakCommander.UpdateClient(clientRepresentation)
+		initKeycloakCommander()
+		keycloakCommander.UpdateClient(clientRepresentation)
 	},
 }
 

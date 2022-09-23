@@ -4,21 +4,14 @@ import (
 	"encoding/json"
 	"errors"
 	"keycloak-commander/cmd"
-	"keycloak-commander/keycloak"
 	"log"
 	"os"
 )
 
 func main() {
 	cmd.ConfigFileWriter = configFileWriter
-	config := getConfigFromFile(getConfigFilename())
-	// TODO: Don't require the commander until a command is actually run
-	cmd.KeycloakCommander = keycloak.NewKeycloakCommander(
-		config.Host,
-		config.Username,
-		config.Password,
-		config.Realm,
-	)
+	cmd.ConfigPayload = getConfigFromFile(getConfigFilename())
+
 	cmd.Execute()
 }
 

@@ -17,9 +17,13 @@ Example: keycloak-commander create client my-client another-client a-third-clien
 		if len(args) == 0 {
 			log.Fatal("At least one client name is required.")
 		}
+		initKeycloakCommander()
 		for _, arg := range args {
 			log.Printf("Creating client %s\n", arg)
-			KeycloakCommander.CreateClient(arg)
+			err := keycloakCommander.CreateClient(arg)
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 	}}
 
