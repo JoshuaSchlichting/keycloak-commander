@@ -24,7 +24,7 @@ func NewKeycloakCommander(hostname, username, password, realm string) *KeycloakC
 	restyClient := client.RestyClient()
 	restyClient.SetDebug(false)
 	restyClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	token, err := client.LoginAdmin(ctx, username, password, realm) // returns token
+	token, err := client.LoginAdmin(ctx, username, password, realm)
 	if err != nil {
 		log.Panicf("Something wrong with the credentials or url: %v", err)
 	}
@@ -39,22 +39,33 @@ func NewKeycloakCommander(hostname, username, password, realm string) *KeycloakC
 	}
 }
 
-func (kc *KeycloakCommander) CreateClient(clientName string) {
+func (kc *KeycloakCommander) CreateClient(clientName string) error {
 
 	client, err := kc.client.CreateClient(kc.context, kc.accessToken, kc.Realm, gocloak.Client{
 		ClientID: &clientName,
 	})
 	if err != nil {
-		panic(err)
+		return err
 	}
 	log.Printf("Created new client with ID: %s\n", client)
+	return nil
 }
 
-func (kc *KeycloakCommander) UpdateClient(updatedClient *gocloak.Client) {
+func (kc *KeycloakCommander) UpdateClient(updatedClient *gocloak.Client) error {
 
 	err := kc.client.UpdateClient(kc.context, kc.accessToken, kc.Realm, *updatedClient)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	log.Printf("Client updated: %s\n", *updatedClient.ClientID)
+	return nil
+}
+
+func (kc *KeycloakCommander) CreateRealm(realmRepresentation *gocloak.RealmRepresentation) error {
+	realm, err := kc.client.CreateRealm(kc.context, kc.accessToken, *realmRepresentation)
+	if err != nil {
+		return err
+	}
+	log.Printf("Created new realm with ID: %s\n", realm)
+	return nil
 }
