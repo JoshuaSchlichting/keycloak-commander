@@ -47,7 +47,7 @@ func (kc *KeycloakCommander) CreateClient(clientName string) {
 	if err != nil {
 		panic(err)
 	}
-	log.Println(client)
+	log.Printf("Created new client with ID: %s\n", client)
 }
 
 func (kc *KeycloakCommander) UpdateClient(updatedClient *gocloak.Client) {
