@@ -30,7 +30,7 @@ Example: keycloak-commander create client my-client another-client a-third-clien
 ### Update a client
 The filename of a json file representing a [ClientRepresentation](https://www.keycloak.org/docs-api/11.0/javadocs/org/keycloak/representations/idm/ClientRepresentation.html) needs to be passed into the program .
 
-An example can be found at [`examples/update_client.json`](examples/update_client.json)
+An example can be found at [`examples/client_representation.json`](examples/client_representation.json)
 ```
 The payload should reflect the Client struct as defined here: https://github.com/Nerzal/gocloak/blob/fe4f627eaf1bff988ee5df2fd0d0b87daac6c074/models.go#L435
 
