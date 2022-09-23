@@ -32,7 +32,10 @@ Example: keycloak-commander update client --json /path/to/file.json`,
 			log.Fatal("There was an error loading the JSON file as a ClientRepresentation: ", err)
 		}
 		initKeycloakCommander()
-		keycloakCommander.UpdateClient(clientRepresentation)
+		err = keycloakCommander.UpdateClient(clientRepresentation)
+		if err != nil {
+			log.Fatal("There was an error updating the client: ", err)
+		}
 	},
 }
 

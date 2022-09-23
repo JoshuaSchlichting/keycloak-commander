@@ -30,7 +30,10 @@ var createRealmCmd = &cobra.Command{
 			log.Fatal("There was an error loading the JSON file as a ClientRepresentation: ", err)
 		}
 		initKeycloakCommander()
-		keycloakCommander.CreateRealm(realmRepresentation)
+		err = keycloakCommander.CreateRealm(realmRepresentation)
+		if err != nil {
+			log.Fatal("There was an error updating the client: ", err)
+		}
 	},
 }
 
