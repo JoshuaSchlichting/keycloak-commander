@@ -48,5 +48,6 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// createRealmCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	createRealmCmd.Flags().String("json", "", "Json file representing the RealmRepresentation payload.")
+	createRealmCmd.MarkFlagRequired("json")
 }
